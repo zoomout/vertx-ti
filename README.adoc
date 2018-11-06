@@ -11,19 +11,15 @@ To launch your tests:
 mvn clean test
 ```
 
-To package your application:
+To package and run your application:
 ```
-mvn clean package
-```
-
-To run your application:
-```
-mvn clean exec:java
+mvn clean package exec:java
 ```
 
 == Help
 
 * https://vertx.io/docs/[Vert.x Documentation]
+* https://vertx.io/docs/guide-for-java-devs/guide-for-java-devs.pdf[Guide for Java developers]
 * https://stackoverflow.com/questions/tagged/vert.x?sort=newest&pageSize=15[Vert.x Stack Overflow]
 * https://groups.google.com/forum/?fromgroups#!forum/vertx[Vert.x User Group]
 * https://gitter.im/eclipse-vertx/vertx-users[Vert.x Gitter]

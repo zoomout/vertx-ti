@@ -7,7 +7,6 @@
     <groupId>com.bogdan</groupId>
     <artifactId>vertx-ti</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-
     <properties>
         <java.version>1.8</java.version>
         <kotlin.version>1.3.0</kotlin.version>
@@ -22,7 +21,7 @@
         <junit-jupiter.version>5.2.0</junit-jupiter.version>
         <junit-platform-surefire-provider.version>1.2.0</junit-platform-surefire-provider.version>
         <junit-platform-launcher.version>1.2.0</junit-platform-launcher.version>
-        <main.verticle>com.bogdan.starter.MainVerticle</main.verticle>
+        <main.verticle>com.bogdan.starter.verticles.MainVerticle</main.verticle>
     </properties>
 
     <dependencyManagement>
@@ -38,44 +37,77 @@
     </dependencyManagement>
 
     <dependencies>
+        <!--kotlin-->
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
             <version>${kotlin.version}</version>
         </dependency>
+        <!--kotlin-->
+        <!--vertx core and web-->
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-core</artifactId>
-            <version>${vertx.version}</version>
         </dependency>
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-web-client</artifactId>
-            <version>${vertx.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.vertx</groupId>
-            <artifactId>vertx-auth-jwt</artifactId>
-            <version>${vertx.version}</version>
         </dependency>
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-web</artifactId>
-            <version>${vertx.version}</version>
         </dependency>
+        <!--vertx core and web-->
+        <!--vertx auth-->
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-auth-jwt</artifactId>
+        </dependency>
+        <!--vertx auth-->
+        <!--web processing and rendering-->
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-web-templ-freemarker</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.rjeschke</groupId>
+            <artifactId>txtmark</artifactId>
+            <version>0.13</version>
+        </dependency>
+        <!--web processing and rendering-->
+        <!--JDBC-->
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-jdbc-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.3.4</version>
+        </dependency>
+        <!--JDBC-->
+        <!--Logging-->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+        <!--Logging-->
+
+        <!--test-->
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-junit5</artifactId>
-            <version>${vertx.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-launcher</artifactId>
             <version>${junit-platform-launcher.version}</version>
             <scope>test</scope>
         </dependency>
+        <!--test-->
+
     </dependencies>
 
     <build>
@@ -87,6 +119,14 @@
                     <configuration>
                         <source>1.8</source>
                         <target>1.8</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>kotlin-maven-plugin</artifactId>
+                    <groupId>org.jetbrains.kotlin</groupId>
+                    <version>${kotlin.version}</version>
+                    <configuration>
+                        <jvmTarget>1.8</jvmTarget>
                     </configuration>
                 </plugin>
             </plugins>
@@ -126,7 +166,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
+                <!--<version>${maven-compiler-plugin.version}</version>-->
                 <executions>
                     <!-- Replacing default-compile as it is treated specially by maven -->
                     <execution>

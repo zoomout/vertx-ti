@@ -11,9 +11,19 @@ To launch your tests:
 mvn clean test
 ```
 
-To package and run your application:
+To package your application
 ```
 mvn clean package exec:java
+```
+
+To run your application using jar:
+```
+java -jar target/vertx-ti-1.0.0-SNAPSHOT-fat.jar
+```
+
+To run your application using maven:
+```
+mvn exec:java
 ```
 
 == Help
